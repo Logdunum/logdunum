@@ -20,7 +20,6 @@
     "cloud",
     "PaaS"
   ],
-  "author": "Florian Traverse <florian.traverse@gmail.com>",
   "license": "BSD",
   "dependencies": {
     "commander": "~1.0.5",
