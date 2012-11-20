@@ -91,7 +91,7 @@ function testLogger (user) {
             return obj
           }
           , SandboxedLogger = sandbox.require('../lib', {
-            requires: { '../models/logentry': fakeLog }
+            requires: { './models/logentry': fakeLog }
           })
 
         fakeLog.collection = {
