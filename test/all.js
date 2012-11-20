@@ -8,7 +8,9 @@ var mocha     = require('mocha')
   , fs        = require('fs')
   , sandbox   = require('sandboxed-module')
   , _         = require('lodash')
-console.log('failover',failover)
+
+console.log('failover file', failover)
+
 describe('A logger', testLogger());
 describe('A logger for user Alice', testLogger('alice'));
 
