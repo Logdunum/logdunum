@@ -8,6 +8,7 @@ var program     = require('commander')
   , _           = require('lodash')
   , util        = require('util')
   , path        = require('path')
+  , pkg         = require('../package.json')
 
 //moment configuration
 moment.calendar = {
@@ -22,7 +23,7 @@ moment.calendar = {
 var levels = ["trace","debug","log","info","warn","error","fatal"];
 
 program
-  .version('0.1.0')
+  .version(pkg.version)
   .option('-n, --lines [number]', 'Only output the last n lines')
   .option('-f, --follow', 'Output appended lines as their arrive')
   .option('-l, --level [level]', 'Filter lines by level, either as a regexp, or a comma separated list')
@@ -58,8 +59,7 @@ if(program.min) {
   }
 
   program.level = new RegExp(selectedLevels.join('|'), 'i')
-
-} 
+}
 
 var colorizeLevel = function nocolor (level) {return level}
 
@@ -99,8 +99,8 @@ function inlineData(data) {
       c =  util.inspect(a, true, null, program.color).replace(/\n/g, '')
 
     if( typeof b == "object")
-      d =  util.inspect(b, true, null, program.color).replace(/\n/g, '')        
-    
+      d =  util.inspect(b, true, null, program.color).replace(/\n/g, '')
+
     return ''+c+' '+d;
   })
 }
@@ -131,7 +131,7 @@ var consoleLog = function (log, options) {
         moment(log._id.getTimestamp()).calendar()
     , level = colorizeLevel( padLevel(log.level.toUpperCase()))
     , body = inlineData(log.data)
-    
+
 
   if(options.nocolor) {
     console.log(timestamp, level, user, body, dash, file)
