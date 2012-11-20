@@ -1,10 +1,13 @@
 {
   "name": "logdunum",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Put your entire cluster's log on a MongoDB to get the full story of what happens in your app !",
   "main": "lib/index.js",
   "scripts": {
     "test": "NODE_ENV=test mocha -R spec -t 7000"
+  },
+  "bin": {
+    { "logdunum" : "./bin/logdunum" }
   },
   "repository": {
     "type": "git",
