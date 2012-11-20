@@ -5,6 +5,7 @@ Logdunum is made in order to make logging in a cluster of several servers a bree
 
 Install
 =======
+
 ```bash
 npm install logdunum
 ```
@@ -12,7 +13,8 @@ npm install logdunum
 Usage
 =====
 * in your code, in order to log something :
-```js
+
+```javascript
 var logger = require('logdunum')(module) // you should get it locally in each module to report the file
 
 logger.info('hello, world')
