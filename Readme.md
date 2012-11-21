@@ -1,17 +1,27 @@
 Purpose
 =======
 
-Logdunum is made in order to make logging in a cluster of several servers a breeze, using MongoDB to store everything fast. It provides both an API for logging from your code, and a cli in order to show and filter your logs.
+Logdunum is made in order to make logging in a cluster of several servers a breeze, using MongoDB to store everything fast. This part provides an API for logging from your NodeJS code, you are advised to install the cli  in global in order to show and filter your logs.
 
 Install
 =======
 
+* add the logdunum lib to your project :
+
 ```bash
-npm install logdunum
+#add logdunum to your project
+$> npm install --save logdunum
+```
+
+* add the logdunum CLI to your system in global :
+```bash
+#install the cli
+$> sudo npm install -g ldm
 ```
 
 Usage
 =====
+
 * in your code, in order to log something :
 
 ```javascript
@@ -22,43 +32,50 @@ logger.debug('hello','world')
 logger.warn({hello: 'world', "goodbye in":5}, 'minutes')
 ```
 
-* as a client :
+* in your console, using the ldm CLI :
 
 ```bash
-$> logdunum -f -n 50
+$> ldm -f -n 50
 ```
 
 You can get help with the cli using --help :
-```bash
-$> logdunum --help
 
-  Usage: logdunum [options]
+```bash
+$> ldm --help
+
+  Usage: ldm [options]
 
   Options:
 
-    -h, --help            output usage information
-    -V, --version         output the version number
-    -n, --lines [number]  Only output the last n lines
-    -f, --follow          Output appended lines as their arrive
-    -l, --level [level]   Filter lines by level, either as a regexp, or a comma separated list
-    -m, --min [level]     Minimal level threshold, with trace < debug < log < info < warn < error < fatal
-    -u, --user [user]     Output only what happened for user
-    -c, --no-color        Output without colors
-    -d, --rawdate         Output raw date, rather than humanized ones
-    -p, --fullpath        Output full file path, rather than humanized ones
+    -h, --help                                                                   output usage information
+    -V, --version                                                                output the version number
+    -n, --lines [number]                                                         only output the last n lines
+    -f, --follow                                                                 output appended lines as their arrive
+    -l, --level [level]                                                          filter lines by level, either as a regexp, or a comma separated list
+    -m, --min [level]                                                            minimal level threshold, [trace < debug < log < info < warn < error < fatal]
+    -u, --user [user]                                                            output only what happened for user
+    -c, --no-color                                                               output without colors
+    -d, --rawdate                                                                output raw date, rather than humanized ones
+    -p, --fullpath                                                               output full file path, rather than humanized ones
+    --with-logdunum-configuration-file                                           set logdunum option [configuration file]
+    --with-logdunum-host <localhost>                                             set logdunum option [host]
+    --with-logdunum-port <27017>                                                 set logdunum option [port]
+    --with-logdunum-database <logdunum>                                          set logdunum option [database]
+    --with-logdunum-collection <logs>                                            set logdunum option [collection]
+    --with-logdunum-failover </home/a117391/dev/Logdunum/logdunum/failover.log>  set logdunum option [failover]
 
 ```
 
 Configuration
 =============
 
-You can configure logdunum with everything available in ```lib/config.js``` thanks to [cfg](https://github.com/LearnBoost/cfg.js), so you can override settings thank to the process arguments using namespace 'logdunum' or by prefixing environnment variable with 'LOGDUNUM'
+You can configure logdunum with everything available in ```lib/config.js``` thanks to [cfg](https://github.com/LearnBoost/cfg.js), so you can override settings thank to the process arguments using namespace 'logdunum' or by prefixing environnment variable with 'LOGDUNUM'. It works both with your own program using logdunum and with the ldm CLI :
 
 * examples :
 
 ```bash
 $> ./myprogram --logdunum-database mylogs
-$> logdunum --logdunum-collection logdunumLogs
-$> LOGDUNUM_PORT=27018 logdunum -f
+$> ldm --logdunum-collection logdunumLogs
+$> LOGDUNUM_PORT=27018 ldm -f
 ```
 

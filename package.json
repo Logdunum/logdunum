@@ -1,19 +1,17 @@
 {
   "name": "logdunum",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "Put your entire cluster's log on a MongoDB to get the full story of what happens in your app !",
   "main": "lib/index.js",
   "scripts": {
     "test": "NODE_ENV=test mocha -R spec -t 7000"
   },
-  "bin": {
-    "logdunum" : "./bin/logdunum"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lyonjs/logdunum"
+    "url": "https://github.com/Logdunum/logdunum"
   },
   "keywords": [
+    "logdunum",
     "log",
     "logs",
     "cluster",
@@ -24,11 +22,11 @@
   "dependencies": {
     "commander": "~1.0.5",
     "moment": "~1.7.2",
-    "colors": "~0.6.0-1",
     "mongoose": "~3.4.0",
     "cfg": "0.0.2",
-    "lodash": "~0.10.0",
-    "fstream": "~0.1.19",
+    "lodash": "~0.10.0"
+  },
+  "devDependencies": {
     "mocha": "~1.7.0",
     "should": "~1.2.1",
     "sandboxed-module": "~0.1.3"
