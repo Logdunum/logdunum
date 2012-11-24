@@ -62,7 +62,7 @@ $> ldm --help
     --with-logdunum-port <27017>                                                 set logdunum option [port]
     --with-logdunum-database <logdunum>                                          set logdunum option [database]
     --with-logdunum-collection <logs>                                            set logdunum option [collection]
-    --with-logdunum-failover </home/a117391/dev/Logdunum/logdunum/failover.log>  set logdunum option [failover]
+    --with-logdunum-failover </your/current/folder/failover.log>                 set logdunum option [failover]
 
 ```
 
@@ -75,7 +75,7 @@ You can configure logdunum with everything available in ```lib/config.js``` than
 
 ```bash
 $> ./myprogram --logdunum-database mylogs
-$> ldm --logdunum-collection logdunumLogs
+$> ldm --with-logdunum-collection logdunumLogs
 $> LOGDUNUM_PORT=27018 ldm -f
 ```
 
